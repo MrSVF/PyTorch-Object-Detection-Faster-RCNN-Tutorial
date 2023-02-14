@@ -41,7 +41,7 @@ from pytorch_faster_rcnn_tutorial.utils import (
 @dataclass
 class Params:
     BATCH_SIZE: int = 2
-    OWNER: str = "johschmidt42"  # set your name here, e.g. johndoe22
+    OWNER: str = "Serg43"  # set your name here, e.g. johndoe22, было: "johschmidt42"
     SAVE_DIR: Optional[
         str
     ] = None  # checkpoints will be saved to cwd (current working directory)
@@ -51,8 +51,8 @@ class Params:
     PRECISION: int = 32
     CLASSES: int = 2
     SEED: int = 42
-    PROJECT: str = "Heads"
-    EXPERIMENT: str = "heads"
+    PROJECT: str = "StopLane"
+    EXPERIMENT: str = "StopLane1"
     MAXEPOCHS: int = 500
     PATIENCE: int = 50
     BACKBONE: ResNetBackbones = ResNetBackbones.RESNET34
@@ -82,7 +82,7 @@ def main():
     save_dir = os.getcwd() if not params.SAVE_DIR else params.SAVE_DIR
 
     # root directory
-    root = ROOT_PATH / "pytorch_faster_rcnn_tutorial" / "data" / "heads"
+    root = ROOT_PATH / "pytorch_faster_rcnn_tutorial" / "data" / "stop_line" # "heads"
 
     # input and target files
     inputs = get_filenames_of_path(root / "input")
@@ -93,7 +93,7 @@ def main():
 
     # mapping
     mapping = {
-        "head": 1,
+        "head": 1, # "head": 1,
     }
 
     # training transformations and augmentations
