@@ -1,5 +1,6 @@
 # imports
 import os
+from dotenv import load_dotenv
 import pathlib
 from dataclasses import dataclass, field
 from typing import List, Optional, Tuple
@@ -41,7 +42,7 @@ from pytorch_faster_rcnn_tutorial.utils import (
 @dataclass
 class Params:
     BATCH_SIZE: int = 2
-    OWNER: str = "Serg43"  # set your name here, e.g. johndoe22, было: "johschmidt42"
+    OWNER: str = "svf"  # set your name here, e.g. johndoe22, было: "johschmidt42"
     SAVE_DIR: Optional[
         str
     ] = None  # checkpoints will be saved to cwd (current working directory)
@@ -51,8 +52,8 @@ class Params:
     PRECISION: int = 32
     CLASSES: int = 2
     SEED: int = 42
-    PROJECT: str = "StopLane"
-    EXPERIMENT: str = "StopLane1"
+    PROJECT: str = "F-RCNN"
+    EXPERIMENT: str = "StopLane"
     MAXEPOCHS: int = 500
     PATIENCE: int = 50
     BACKBONE: ResNetBackbones = ResNetBackbones.RESNET34
@@ -73,10 +74,12 @@ ROOT_PATH = pathlib.Path(__file__).parent.absolute()
 def main():
     params = Params()
 
+    load_dotenv()
     # api key
-    api_key = os.environ[
-        "NEPTUNE"
-    ]  # if this throws an error, you didn't set your env var
+    # api_key = os.environ[
+    #     "NEPTUNE"
+    # ]  # if this throws an error, you didn't set your env var
+    api_key = os.environ.get('NEPTUNE')
 
     # save directory
     save_dir = os.getcwd() if not params.SAVE_DIR else params.SAVE_DIR
