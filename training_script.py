@@ -96,7 +96,7 @@ def main():
 
     # mapping
     mapping = {
-        "head": 1, # "head": 1,
+        "stopline": 1, # "head": 1,
     }
 
     # training transformations and augmentations
@@ -135,11 +135,11 @@ def main():
     seed_everything(params.SEED)
 
     # training validation test split
-    inputs_train, inputs_valid, inputs_test = inputs[:12], inputs[12:16], inputs[16:]
+    inputs_train, inputs_valid, inputs_test = inputs[:4], inputs[4:6], inputs[6:] #inputs[:12], inputs[12:16], inputs[16:]
     targets_train, targets_valid, targets_test = (
-        targets[:12],
-        targets[12:16],
-        targets[16:],
+        targets[:4],
+        targets[4:6],
+        targets[6:],
     )
 
     # dataset training
